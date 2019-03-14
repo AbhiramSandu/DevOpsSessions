@@ -1,0 +1,63 @@
+https://github.com/vitorvezani/springboot-logs-to-elk-sample/blob/master/docker-compose.yml
+
+run this example by removing the docker compose configuration from the app.
+-------------
+
+ once after successfully running this app, make the changes to springbootApp class of POC by adding the eventlog part.
+add the log configuration to properties file. and check the kebhana.
+
+
+-----------notes the one i need is the clarity on how to access the log files from (springboot app running on one cluster, to the logfiles  
+hosted on the other machine.( basically i need to give a path in the spring application where springboot can write the  logs and ELK can   read 
+
+the files.
+----------------
+
+/opt/logstash/config contains the yml files
+/etc/logstash/conf.d.  --location of .conf files where we need to keep the conf fiels
+
+-------------imp notes ----------
+mount the path of the logs outside the pod----so that it can be accessed by filebeat.
+filebeet installation
+https://www.elastic.co/guide/en/beats/filebeat/current/view-kibana-dashboards.html
+https://elk-docker.readthedocs.io
+
+https://github.com/spujadas/elk-docker/blob/master/nginx-filebeat/filebeat.yml
+
+
+ Hide 
+/home/centos/apache-daily-access.log
+
+/opt/logstash# bin/logstash -f logsst-2.conf
+https://www.digitalocean.com/community/tutorials/how-to-share-data-between-docker-containers
+
+https://www.digitalocean.com/community/tutorials/how-to-share-data-between-docker-containers
+
+docker build --tag=sbELK .
+
+docker run -d --name=Container4 -v DataVolume4:/datavolume4 ubuntu
+sbelk
+====================================
+docker run -ti --name=elkimage -v DataVolumeELK:/datavolumeELK elkimage
+
+echo "Example1" > /datavolumeELK/Example1.txt
+
+---/opt/logstash copy the conf file  here
+
+
+----
+
+docker run -ti --name=helloworld -v DataVolumeELK:/datavolumeELK hello-world
+
+docker run d --name=node1container --volumes-from elkimage nodeimage1
+docker run d --name=node1container -v DataVolumeELK:/datavolume ELKnodeimage1
+--------------------------actual work
+sebp/elk 
+
+-----------------------------
+docker run -d --name sbelkc -v /home/centos/logs:/logs elkimage
+sudo docker run -d -p 9001:5601 -p 9000:9200 -p 8080:5044 -it --name elk  -v /home/centos/logs:/logs sebp/elk
+>>/logs/apache-daily-access.log
+
+/bin/logstash -f logstash-poc.conf
+docker run -d --name nodec -v /home/centos/logs:/logs nodeimage1

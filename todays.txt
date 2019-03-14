@@ -1,0 +1,33 @@
+https://github.com/hellokoding/dockercompose-springboot-mysql-nginx
+
+https://github.com/AbhiramSandu/springboot-elk-filebeat-example
+
+https://www.bogotobogo.com/DevOps/Docker/Docker_ELK_ElasticSearch_Logstash_Kibana.php
+
+https://logz.io/blog/jenkins-build-monitoring/
+
+https://www.youtube.com/watch?v=6bXSfjwQVIc
+
+ELK POC m/c - 54.186.5.116
+M/C5  - 54.203.213.48
+
+M/C5  - 34.214.95.59
+
+https://dzone.com/articles/mysql-kubernetes-deploying-and-running-mysql-on-ku
+
+==================== got to one fo the pods of my sql====
+   96  export MYSQLPOD=$(kubectl get pods  -l app=mysql --no-headers | awk '{print $1}')
+   97  kubectl exec  -ti <<MYSQLPOD>> -- mysql --user=root --password=password
+here 
+
+ELK location
+https://elk-docker.readthedocs.io/
+/opt
+
+ sudo docker run -d -p 9001:5601 -p 9000:9200 -p 8080:5044 -it --name elk sebp/elk
+
+$ sudo docker run -p 5601:5601 -p 9200:9200 -p 5044:5044 -it \
+    -e LOGSTASH_START=0 -e KIBANA_START=0 --name elk sebp/elk
+
+f you browse to http://54.186.5.116:9000/_search?pretty (e.g. http://localhost:9200/_search?pretty for a local native instance of Docker) you'll see that Elasticsearch has indexed the entry:
+
